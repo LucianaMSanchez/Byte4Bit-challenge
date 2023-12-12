@@ -1,13 +1,13 @@
-import { Router } from 'express';
+// import { Router } from 'express';
 
-import {
-    payment
-} from "../handlers/paymentsHandlers";
+// import {
+//     payment
+// } from "../handlers/paymentsHandlers";
 
-const paymentsRouter = Router();
+// const paymentsRouter = Router();
 
   
-paymentsRouter.post("/", payment);    
+// paymentsRouter.post("/", payment);    
 
 
-export default paymentsRouter;
+// export default paymentsRouter;

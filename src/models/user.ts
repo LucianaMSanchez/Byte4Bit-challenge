@@ -1,10 +1,10 @@
 import { Schema, model } from "mongoose";
-import bcrypt from 'bcrypt'
 
 const userSchema = new Schema ({
     name: {
         type: String, 
         require: true,
+        unique: true,
         trim: true
     },
     email: {
@@ -15,9 +15,10 @@ const userSchema = new Schema ({
     password: {
         type: String, 
         require: true,
-        trim: true
+        trim: true,
+        select: true,
     }, 
-    admin: {
+    role: {
         type: String, 
         require: true,
         trim: true
@@ -26,19 +27,5 @@ const userSchema = new Schema ({
     versionKey: false,
     timestamps: true
 });
-
-// userSchema.pre('save', function(next) {
-//     if (!this.isModified('password')) {
-//         return next();
-//     }
-//     const salt = bcrypt.genSaltSync(10);
-//     const hash = bcrypt.hashSync(this.password, salt);
-//     this.password = hash;
-//     next();
-// });
-
-// userSchema.methods.comparePassword = function(password) {
-//     return bcrypt.compareSync(password, this.password);
-// };
 
 export default model("User", userSchema);

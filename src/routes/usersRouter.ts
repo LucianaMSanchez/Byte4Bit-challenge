@@ -4,11 +4,11 @@ import {
     createUser,
     updateUser,
     loginUser
-} from "../handlers/usersHandlers";
+} from "../controllers/usersControllers";
 
 const usersRouter = Router();
 
-usersRouter.get("/login", loginUser);    
+usersRouter.post("/login", loginUser);    
 
 usersRouter.post("/", createUser);    
 

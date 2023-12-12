@@ -7,7 +7,7 @@ import {
     createProduct,
     updateProduct,
     deleteProduct
-} from "../handlers/productsHandlers";
+} from "../controllers/productsControllers";
 
 const productsRouter = Router();
 
@@ -15,13 +15,13 @@ productsRouter.get("/:id", getProductDetail);
 
 productsRouter.delete("/:id", deleteProduct); 
 
-productsRouter.get("/search", getProductByName);
-
 productsRouter.get("/", getProducts);    
+
+productsRouter.get("/search", getProductByName);
 
 productsRouter.post("/", createProduct);    
 
-productsRouter.put("/", updateProduct);    
+productsRouter.put("/:id", updateProduct);    
 
 
 export default productsRouter;
