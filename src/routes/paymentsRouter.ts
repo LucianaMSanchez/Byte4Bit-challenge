@@ -1,13 +1,14 @@
-// import { Router } from 'express';
+import { Router } from 'express';
 
-// import {
-//     payment
-// } from "../handlers/paymentsHandlers";
+import {
+    checkoutSession
+} from "../controllers/paymentsControllers";
 
-// const paymentsRouter = Router();
+const paymentsRouter = Router();
 
   
-// paymentsRouter.post("/", payment);    
+paymentsRouter.post("/create-checkout-session", checkoutSession);    
 
 
-// export default paymentsRouter;
+
+export default paymentsRouter;
