@@ -2,14 +2,14 @@ import { Request, Response } from 'express';
 import Product from '../models/product';
 
 
-export const getProductByName = async (req: Request, res: Response) => {
+export const getProductByTitle = async (req: Request, res: Response) => {
     try {
-        const name = req.query.name as string;
-        const product = await Product.find({ name });
-        if (!product || product.length === 0) {
-            return res.status(200).json('No product with that name');
+        const title = req.query.title as string;
+        const products = await Product.find({ title: { $regex: new RegExp(title, 'i') } });
+        if (!products || products.length === 0) {
+            return res.status(404).json('No product with that name');
         }
-        return res.status(200).json(product);
+        return res.status(200).json(products);
     } catch (error) {
         if(error instanceof Error){
             return res.status(500).json({ message: error.message });
